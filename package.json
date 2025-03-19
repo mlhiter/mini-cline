@@ -14,10 +14,48 @@
   "contributes": {
     "commands": [
       {
-        "command": "mini-cline.helloWorld",
-        "title": "Hello World"
+        "command": "mini-cline.plusButtonClicked",
+        "title": "New Task",
+        "icon": "$(add)"
+      },
+      {
+        "command": "mini-cline.settingsButtonClicked",
+        "title": "Settings",
+        "icon": "$(settings-gear)"
       }
-    ]
+    ],
+    "views": {
+      "mini-cline-webview": [
+        {
+          "type": "webview",
+          "id": "mini-cline-webview",
+          "name": ""
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "mini-cline-webview",
+          "title": "mini-cline",
+          "icon": "images/bot.svg"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "mini-cline.plusButtonClicked",
+          "group": "navigation@1",
+          "when": "view == mini-cline-webview"
+        },
+        {
+          "command": "mini-cline.settingsButtonClicked",
+          "when": "view == mini-cline-webview",
+          "group": "navigation@2"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
